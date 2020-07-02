@@ -31,6 +31,7 @@ const shirtInfo = () => {
             designShirtColor.style.display = 'block';
             designShirtLabel.style.display = 'block';
             designShirtOption[0].style.display = 'block';
+            designShirtOption[0].selected = 'selected';
             designShirtOption[1].style.display = 'block';
             designShirtOption[2].style.display = 'block';
             designShirtOption[3].style.display = 'none';
@@ -40,6 +41,7 @@ const shirtInfo = () => {
             designShirtColor.style.display = 'block';
             designShirtLabel.style.display = 'block';
             designShirtOption[3].style.display = 'block';
+            designShirtOption[3].selected = 'selected';
             designShirtOption[4].style.display = 'block';
             designShirtOption[5].style.display = 'block';
             designShirtOption[0].style.display = 'none';
