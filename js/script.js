@@ -72,6 +72,7 @@ const shirtInfo = () => {
 const checkFieldSet = document.querySelector('.activities');
 const checkbox = document.querySelectorAll('input[type=checkbox]');
 
+//rework this later and refactor (probably a better way to do this but it functions)
 
 checkFieldSet.addEventListener('change', (e) => {
     if (checkbox[1].checked === true && e.target === checkbox[1]) {
