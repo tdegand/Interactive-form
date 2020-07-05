@@ -71,6 +71,9 @@ const shirtInfo = () => {
 //Register for activities filtering section
 const checkFieldSet = document.querySelector('.activities');
 const checkbox = document.querySelectorAll('input[type=checkbox]');
+const activities = document.querySelector('.activities');
+const runningTotal = document.createElement('h3');
+activities.appendChild(runningTotal);
 
 //rework this later and refactor (probably a better way to do this but it functions)
 
@@ -92,13 +95,25 @@ checkFieldSet.addEventListener('change', (e) => {
     } else if (checkbox[4].checked === false && e.target === checkbox[4]) {
         checkbox[2].disabled = false;
     }
+
+    // display total below the checkboxs when they are checked
+
+    const totalCost = () => {
+        for (let i = 0; i < checkbox.length; i++) {
+            if (e.target.checked === true) {
+                let currentTotal = 0;
+                if (e.target === checkbox[0]) {
+                    let total = currentTotal + 200
+                    runningTotal.innerHTML = `$${currentTotal}`;
+                } else {
+                    let total = currentTotal + 100
+                    runningTotal.innerHTML = `$${currentTotal}`;
+                }
+            }
+        }
+    }
+    totalCost();
 });
-
-
-
-
-
-
 
 //Payment info section
 
