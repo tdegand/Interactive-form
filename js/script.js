@@ -100,17 +100,15 @@ checkFieldSet.addEventListener('change', (e) => {
 
     const totalCost = () => {
         let currentTotal = 0;
-        for (let i = 0; i < checkbox.length; i++) {
-            if (e.target.checked === true) {
-                if (e.target === checkbox[0]) {
-                    currentTotal + 200
-
-                } else {
-                    currentTotal + 100
-                }
+        if (e.target.checked === true) {
+            if (e.target === checkbox[0]) {
+                currentTotal = currentTotal + 200;
             }
-            runningTotal.innerHTML = `$${currentTotal}`;
+            if (e.target !== checkbox[0]) {
+                currentTotal = currentTotal + 100;
+            }
         }
+        runningTotal.innerHTML = `$${currentTotal}`;
     }
     totalCost();
 });
