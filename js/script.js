@@ -77,6 +77,7 @@ activities.appendChild(runningTotal);
 
 //rework this later and refactor (probably a better way to do this but it functions)
 
+
 checkFieldSet.addEventListener('change', (e) => {
     if (checkbox[1].checked === true && e.target === checkbox[1]) {
         checkbox[3].disabled = true;
@@ -97,20 +98,16 @@ checkFieldSet.addEventListener('change', (e) => {
     }
 
     // display total below the checkboxs when they are checked
-
-    const totalCost = () => {
-        let currentTotal = 0;
-        if (e.target.checked === true) {
-            if (e.target === checkbox[0]) {
-                currentTotal = currentTotal + 200;
-            }
-            if (e.target !== checkbox[0]) {
-                currentTotal = currentTotal + 100;
-            }
-        }
-        runningTotal.innerHTML = `$${currentTotal}`;
+    let total = 0;
+    if (e.target.checked && e.target === checkbox[0]) {
+        total = total + 200
     }
-    totalCost();
+
+    if (e.target.checked && e.target !== checkbox[0]) {
+        total = total + 100;
+    }
+
+    runningTotal.innerHTML = `$${total}`;
 });
 
 //Payment info section
