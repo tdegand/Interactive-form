@@ -74,7 +74,7 @@ const checkbox = document.querySelectorAll('input[type=checkbox]');
 const activities = document.querySelector('.activities');
 const runningTotal = document.createElement('h3');
 activities.appendChild(runningTotal);
-
+let total = 0;
 //rework this later and refactor (probably a better way to do this but it functions)
 
 
@@ -98,13 +98,20 @@ checkFieldSet.addEventListener('change', (e) => {
     }
 
     // display total below the checkboxs when they are checked
-    let total = 0;
+
     if (e.target.checked && e.target === checkbox[0]) {
         total = total + 200
     }
 
     if (e.target.checked && e.target !== checkbox[0]) {
         total = total + 100;
+    }
+
+    if (!e.target.checked && e.target === checkbox[0]) {
+        total = total - 200
+    }
+    if (!e.target.checked && e.target !== checkbox[0]) {
+        total = total - 100
     }
 
     runningTotal.innerHTML = `$${total}`;
