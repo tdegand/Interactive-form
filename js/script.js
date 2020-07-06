@@ -1,5 +1,5 @@
 const nameInput = document.getElementById('name');
-nameInput.focus();
+//nameInput.focus();
 
 //Create a function to show the extra inpout when "Other" is selected
 
@@ -150,7 +150,28 @@ paymentSelect.addEventListener('change', () => {
 
 
 //form valiadation for all fields (includes error messages and tooltips)
+const registerBut = document.querySelector('button[type=submit]');
+const form = document.querySelector('form');
 
+form.setAttribute('name', 'form');
+nameInput.setAttribute('name', 'username');
+
+const validation = (e) => {
+
+    //validating Name Input field
+    if (name == '') {
+        name.style.borderColor = 'red';
+        name.focus();
+        e.preventDefault();
+    }
+}
+
+registerBut.addEventListener('submit', validation)
+
+
+
+
+//call functions
 
 chooseRole();
 shirtInfo();
