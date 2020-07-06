@@ -1,5 +1,6 @@
 const nameInput = document.getElementById('name');
-//nameInput.focus();
+nameInput.focus();
+
 
 //Create a function to show the extra inpout when "Other" is selected
 
