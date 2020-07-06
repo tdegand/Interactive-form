@@ -117,6 +117,37 @@ checkFieldSet.addEventListener('change', (e) => {
 });
 
 //Payment info section
+const creditCard = document.getElementById('credit-card');
+const paypal = document.getElementById('paypal');
+const bitcoin = document.getElementById('bitcoin');
+const paymentSelect = document.getElementById('payment');
+const paymentOption = document.querySelectorAll('#payment option');
+
+creditCard.style.display = 'none';
+paypal.style.display = 'none';
+bitcoin.style.display = 'none';
+paymentOption[0].disabled = true;
+paymentOption[0].style.display = 'none';
+
+
+paymentSelect.addEventListener('change', () => {
+    if (paymentOption[1].selected) {
+        creditCard.style.display = 'block';
+        bitcoin.style.display = 'none';
+        paypal.style.display = 'none';
+    } else if (paymentOption[2].selected) {
+        paypal.style.display = 'block';
+        creditCard.style.display = 'none';
+        bitcoin.style.display = 'none';
+    } else if (paymentOption[3].selected) {
+        bitcoin.style.display = 'block';
+        creditCard.style.display = 'none';
+        paypal.style.display = 'none';
+
+    }
+});
+
+
 
 //form valiadation for all fields (includes error messages and tooltips)
 
