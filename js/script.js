@@ -99,17 +99,17 @@ checkFieldSet.addEventListener('change', (e) => {
     // display total below the checkboxs when they are checked
 
     const totalCost = () => {
+        let currentTotal = 0;
         for (let i = 0; i < checkbox.length; i++) {
             if (e.target.checked === true) {
-                let currentTotal = 0;
                 if (e.target === checkbox[0]) {
-                    let total = currentTotal + 200
-                    runningTotal.innerHTML = `$${currentTotal}`;
+                    currentTotal + 200
+
                 } else {
-                    let total = currentTotal + 100
-                    runningTotal.innerHTML = `$${currentTotal}`;
+                    currentTotal + 100
                 }
             }
+            runningTotal.innerHTML = `$${currentTotal}`;
         }
     }
     totalCost();
