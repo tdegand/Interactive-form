@@ -152,18 +152,13 @@ paymentSelect.addEventListener('change', () => {
 
 //form valiadation for all fields (includes error messages and tooltips)
 const registerBut = document.querySelector('button[type=submit]');
-const form = document.querySelector('form');
-
-form.setAttribute('name', 'form');
-nameInput.setAttribute('name', 'username');
 
 const validation = (e) => {
 
     //validating Name Input field
-    if (name == '') {
-        name.style.borderColor = 'red';
-        name.focus();
-        e.preventDefault();
+    if (nameInput.value === '') {
+        nameInput.style.backgroundColor = 'red';
+        return false;
     }
 }
 
