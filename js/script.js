@@ -151,19 +151,27 @@ paymentSelect.addEventListener('change', () => {
 
 
 //form valiadation for all fields (includes error messages and tooltips)
+const form = document.querySelector('form');
+const email = document.getElementById('mail');
 const registerBut = document.querySelector('button[type=submit]');
+const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-const validation = (e) => {
 
-    //validating Name Input field
-    if (nameInput.value === '') {
-        nameInput.style.backgroundColor = 'red';
-        return false;
+form.addEventListener('submit', (e) => {
+
+    if (nameInput.value === '' || nameInput.value == null) {
+        e.preventDefault();
+        nameInput.placeholder = 'NAME IS REQUIRED!';
+        nameInput.style.borderColor = 'red';
     }
-}
 
-registerBut.addEventListener('submit', validation)
+    if (email.value !== regex) {
+        e.preventDefault();
+        email.placeholder = 'PLEASE ENTER VALID EMAIL';
+        email.style.borderColor = 'red';
+    }
 
+});
 
 
 
