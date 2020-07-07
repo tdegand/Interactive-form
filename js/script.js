@@ -194,7 +194,7 @@ form.addEventListener('submit', (e) => {
     const zipCode = document.getElementById('zip');
     const cvvNumb = document.getElementById('cvv');
 
-    const ccNum = /[\d]{13,16}/;
+    const ccNum = /^[\d]{13,16}$/;
     const regZip = /^[\d]{5}$/;
     const regCvv = /^[\d]{3}$/;
 
