@@ -127,7 +127,6 @@ const paymentOption = document.querySelectorAll('#payment option');
 creditCard.style.display = 'none';
 paypal.style.display = 'none';
 bitcoin.style.display = 'none';
-paymentOption[0].disabled = true;
 paymentOption[0].style.display = 'none';
 paymentOption[1].selected = true;
 creditCard.style.display = 'block';
