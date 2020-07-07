@@ -1,7 +1,6 @@
 const nameInput = document.getElementById('name');
 nameInput.focus();
 
-
 //Create a function to show the extra inpout when "Other" is selected
 
 const chooseRole = () => {
@@ -38,6 +37,8 @@ const shirtInfo = () => {
     const design = document.getElementById('design');
     designShirtColor.style.display = 'none';
     designShirtLabel.style.display = 'none';
+    themeSelect[0].style.display = 'none';
+    themeSelect[0].disabled = true;
 
     design.addEventListener('change', () => {
 
@@ -128,6 +129,8 @@ paypal.style.display = 'none';
 bitcoin.style.display = 'none';
 paymentOption[0].disabled = true;
 paymentOption[0].style.display = 'none';
+paymentOption[1].selected = true;
+creditCard.style.display = 'block';
 
 paymentSelect.addEventListener('change', () => {
     if (paymentOption[1].selected) {
@@ -193,8 +196,8 @@ form.addEventListener('submit', (e) => {
     const cvvNumb = document.getElementById('cvv');
 
     const ccNum = /[\d]{13,16}/;
-    const regZip = /[\d]{5}/;
-    const regCvv = /[\d]{3}/;
+    const regZip = /^[\d]{5}$/;
+    const regCvv = /^[\d]{3}$/;
 
     if (paymentOption[1].selected) {
         //Check CC field
