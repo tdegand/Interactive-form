@@ -77,9 +77,8 @@ const runningTotal = document.createElement('h3');
 activities.appendChild(runningTotal);
 let total = 0;
 runningTotal.innerHTML = `$${total}`;
+
 //rework this later and refactor (probably a better way to do this but it functions)
-
-
 checkFieldSet.addEventListener('change', (e) => {
     if (checkbox[1].checked === true && e.target === checkbox[1]) {
         checkbox[3].disabled = true;
@@ -130,7 +129,6 @@ bitcoin.style.display = 'none';
 paymentOption[0].disabled = true;
 paymentOption[0].style.display = 'none';
 
-
 paymentSelect.addEventListener('change', () => {
     if (paymentOption[1].selected) {
         creditCard.style.display = 'block';
@@ -148,32 +146,76 @@ paymentSelect.addEventListener('change', () => {
     }
 });
 
-
-
 //form valiadation for all fields (includes error messages and tooltips)
 const form = document.querySelector('form');
 const email = document.getElementById('mail');
 const registerBut = document.querySelector('button[type=submit]');
-const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const regex = /[\w]{1,}\@[a-zA-Z]{3,}\.[a-zA-Z]{3}/;
 
 
 form.addEventListener('submit', (e) => {
 
+    //Checking name field
     if (nameInput.value === '' || nameInput.value == null) {
         e.preventDefault();
         nameInput.placeholder = 'NAME IS REQUIRED!';
         nameInput.style.borderColor = 'red';
     }
-
-    if (email.value !== regex) {
+    //Checking email field
+    if (email.value === '' || !regex.test(email.value)) {
         e.preventDefault();
         email.placeholder = 'PLEASE ENTER VALID EMAIL';
         email.style.borderColor = 'red';
     }
+    //Checking if at least one checkbox has been checked
+
+    let countCheckBox = 0;
+
+    //count all checkboxs and if not checked add them to the above variable
+    for (let i = 0; i < checkbox.length; i++) {
+        if (!checkbox[i].checked) {
+            countCheckBox++
+        }
+    }
+    //If the checkbox variable equals the amount of checkboxes then no boxes are checked and error should be shown
+    if (countCheckBox === checkbox.length) {
+        e.preventDefault();
+        runningTotal.innerHTML = "Please choose a conference or workshop!";
+        activities.style.borderLeft = '2px solid red';
+        activities.style.borderRight = '2px solid red';
+
+    }
+
+
+    //Checking CC information fields
+    const creditCardField = document.getElementById('cc-num');
+    const zipCode = document.getElementById('zip');
+    const cvvNumb = document.getElementById('cvv');
+
+    const ccNum = /[\d]{13,16}/;
+    const regZip = /[\d]{5}/;
+    const regCvv = /[\d]{3}/;
+
+    if (paymentOption[1].selected) {
+        //Check CC field
+        if (creditCardField.value === '' || !ccNum.test(creditCardField.value)) {
+            e.preventDefault();
+            creditCardField.placeholder = 'Please enter Valid Credit Card Number';
+            creditCardField.style.borderColor = 'red';
+        }
+        //Check Zipcode Field
+        if (zipCode.value === '' || !regZip.test(zipCode.value)) {
+            e.preventDefault();
+            zipCode.style.borderColor = 'red';
+        }
+        //Check CVV field
+        if (cvvNumb.value === '' || !regCvv.test(cvvNumb.value)) {
+            e.preventDefault();
+            cvvNumb.style.borderColor = 'red';
+        }
+    }
 
 });
-
-
 
 //call functions
 
