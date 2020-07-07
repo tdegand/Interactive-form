@@ -119,6 +119,10 @@ button {
 	transition: all 0.5s;
 	
 }
+button:focus,
+button:visited {
+	outline: none;
+}
 
 button:hover {
 	background: #6F9DDC;
