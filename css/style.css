@@ -66,7 +66,7 @@ button {
 
 legend {
 	font-weight: bold;
-	padding-top: .5em;
+	padding: .5em 0 !important;
 	border-top: 2px solid rgba(65, 133, 95, 0.6);
 	margin-bottom: 1.125em;
 }
@@ -81,6 +81,14 @@ label {
 	color: #000;
 	display: block;
 	margin-bottom: .5em;
+}
+label[for="mail"],
+label[for="title"] {
+    margin-top: .5em;
+}
+
+label[for="exp-month"] {
+	padding-top: .5em;
 }
 
 input,
@@ -108,6 +116,10 @@ input[type="checkbox"],
 input[type="radio"] {
 	display: inline-block;
 }
+#other-title{
+	margin-top: .6em;
+}
+
 
 button {
 	color: #fff;
@@ -128,8 +140,7 @@ button:visited {
 }
 
 button:hover {
-	background: #1c9e4a;
-	box-shadow: 2px 4px 3px 2px rgba(0, 0, 0, .5);
+	background: #092d16;
 }
 
 input, 
